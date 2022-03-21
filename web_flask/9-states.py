@@ -29,7 +29,8 @@ def states(id=None):
                 state = item
                 flag = 1
 
-        return render_template('9-states.html', states=states, state=state, id = item.id, flag=flag)
+        return render_template('9-states.html', states=states,
+                               state=state, id=item.id, flag=flag)
     else:
         return render_template('9-states.html', states=states)
 
