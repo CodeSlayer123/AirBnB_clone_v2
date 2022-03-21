@@ -9,5 +9,5 @@ app.url_map.strict_slashes = False
 def hello_HBNB():
     """returns hello HBNB"""
     return "Hello HBNB!"
-
-app.run(host="0.0.0.0")
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
