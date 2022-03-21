@@ -6,9 +6,9 @@
     <BODY>
         <H1>States</H1>
         <UL>
-            {% for item in states|dictsort(false, 'value') %}
-                <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
-            {%endfor%}
+            {% for item in states.values()|sort(attribute="name") %}
+                <LI>State: {{ item.id }}: <B>{{ item.name }}</B></LI>
+            {% endfor %}
         </UL>
     </BODY>
 </HTML>
