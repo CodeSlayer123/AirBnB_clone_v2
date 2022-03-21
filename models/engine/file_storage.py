@@ -67,4 +67,4 @@ class FileStorage:
 
     def close(self):
         """calls reload method for deserializing"""
-        self.reload()
+        FileStorage.reload()
