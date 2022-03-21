@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
+import models
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Float, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 import os
-from models import storage
 from models.review import Review
 from models.amenity import Amenity
-import sqlalchemy
 
 place_amenity = Table('place_amenity', Base.metadata,
                       Column('place_id', String(60), ForeignKey('places.id'),
@@ -43,7 +42,7 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             """getter that returns list of Review instances"""
-            objects = storage.all(Review)
+            objects = models.storage.all(Review)
             my_list = []
             for value in objects.values():
                 if self.id == value.place_id:
@@ -53,7 +52,7 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             """getter that returns list of Amenity instances"""
-            objects = storage.all(Amenity)
+            objects = models.storage.all(Amenity)
             my_list = []
             for value in objects.values():
                 if self.id == value.place_id:
