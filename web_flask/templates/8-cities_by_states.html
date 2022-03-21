@@ -6,12 +6,13 @@
     <BODY>
         <H1>States</H1>
         <UL>
-            {% for item in states|dictsort(false, 'value') %}
+            {% for item in states.values() | sort(attribute="name") %}
                 <LI>{{ item.id }}: <B>{{ item.name }}</B>
                 <UL>
-                    {% for city in states.cities|dictsort(false, 'value') %}
+                    {% for city in item.cities | sort(attribute="name") %}
                         <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
-                </UL>
+                    {%endfor%}
+                    </UL>
                 </LI>
             {%endfor%}
         </UL>
