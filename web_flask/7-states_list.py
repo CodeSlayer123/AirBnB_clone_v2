@@ -1,24 +1,33 @@
 #!/usr/bin/python3
-"""starts a Flask web application"""
-from flask import Flask
-from flask import render_template
+"""script that starts a Flask web application
+web app must be listening on 0.0.0.0:5000
+/: will display "Hello HBNB!"
+/hbnb: will display "HBHB"
+/c: will display “C ” followed by the value of the text variable
+/python: will display " Python " followed by the value of text variable --
+     has default value of "is cool"
+must use sctrict_slashes=False in route
+"""
+
+
+from flask import Flask, render_template
 from models import storage
 from models.state import State
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.teardown_appcontext
-def teardown_db(exception):
-    """tears down database"""
-    storage.close()
-
-
-@app.route('/states_list')
+@app.route("/states_list", strict_slashes=False)
 def states_list():
-    """returns HTML page"""
+    """displays 'Hello HBNB!'"""
     states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+
+@app.teardown_appcontext
+def teardown(cont):
+    """remove the current sql alchemy session"""
+    storage.close()
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="5000")
