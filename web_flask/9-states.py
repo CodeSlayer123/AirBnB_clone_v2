@@ -21,7 +21,17 @@ def teardown_db(exception):
 def states(id=None):
     """returns HTML page"""
     states = storage.all(State)
-    return render_template('9-states.html', states=states, id=id)
+    state = None
+    flag = 0
+    if id:
+        for item in states.values():
+            if item.id == id:
+                state = item
+                flag = 1
+
+        return render_template('9-states.html', states=states, state=state, id = item.id, flag=flag)
+    else:
+        return render_template('9-states.html', states=states)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
