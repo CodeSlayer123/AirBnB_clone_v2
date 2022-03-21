@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL>
+            {% for item in states|dictsort(false, 'value') %}
+                <LI>{{ item.id }}: <B>{{ item.name }}</B>
+                <UL>
+                    {% for city in states.cities|dictsort(false, 'value') %}
+                        <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
+                </UL>
+                </LI>
+            {%endfor%}
+        </UL>
+    </BODY>
+</HTML>
