@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>AirBnb Clone</title>
+
+        <link rel="stylesheet" type = "text/css" href="../static/styles/4-common.css"/>
+        <link rel="stylesheet" type = "text/css" href="../static/styles/3-header.css"/>
+        <link rel="stylesheet" type = "text/css" href="../static/styles/3-footer.css"/>
+        <link rel="stylesheet" type = "text/css" href="../static/styles/6-filters.css"/>
+        <link rel="icon" href="../static/images/icon.png"/>
+    </head>
+
+    <body>
+        <header>
+            <div id="logo"></div>​
+        </header>
+
+        <div class="container">
+            <section class="filters">
+                <div class="locations">
+                    <h3>States</h3>
+                    <h4>&nbsp;</h4>
+                    <ul class="popover">
+                        {% for item in states.values() | sort(attribute="name") %}
+                        <li>
+                                <h2>{{ item.name }}</h2>
+                                <ul>
+                                    {% for city in item.cities | sort(attribute="name") %}
+                                    <li class="city">{{ city.name }}</li>
+                                    {%endfor%}
+                                </ul>
+                                <br>
+                            {%endfor%}
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>&nbsp;</h4>
+                    <ul class="popover">
+                        {% for item in amenities.values() | sort(attribute="name") %}
+                            <li class="amens">{{item.name}}</li>
+                        {%endfor%}
+                    </ul>
+                </div>
+
+               <button>
+                    Search
+                </button>
+
+            </section>
+        </div>
+
+
+
+<div class="hide">
+
+iugolhi
+
+
+
+</div>
+
+
+
+
+        <footer>
+            Best School
+        </footer>
+    </body>
+
+</html>
