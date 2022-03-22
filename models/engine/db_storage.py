@@ -14,6 +14,7 @@ from models.state import State
 from models.user import User
 from os import getenv
 
+
 class DBStorage:
     """This class manages storage of hbnb models in SQL format
     """
